@@ -30,10 +30,13 @@ bld/
 [Oo]bj/
 [Ll]og/
 
-x64/*
-*/x64/*
-.vs/*
-*/.vs/*
+v15/
+Debug/*
+
+# x64/*
+# */x64/*
+# .vs/*
+# */.vs/*
 
 
 # Visual Studio 2015/2017 cache/options directory
