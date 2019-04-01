@@ -637,62 +637,62 @@ void ramie(double r1, double r2, double h, double d)
 
 void lazik()
 {
+
 	GLfloat srodek[3] = { -50.0f,15.0f,40.0f };		//wsp œrodków kó³
-	GLfloat srodek2[3] = { 50.0f,15.0f,40.0f };	
+	GLfloat srodek2[3] = { 50.0f,15.0f,40.0f };
 	GLfloat srodek3[3] = { -50.0f,15.0f,-40.0f };
 	GLfloat srodek4[3] = { 50.0f,15.0f, -40.0f };
-
-	GLfloat poczatek[3] = { -55.0f,35.0f, -20.0f };	//wsp pocz¹tku prostok¹tów
-	GLfloat poczatek1[3] = { -55.0f,10.0f, -25.0f };
-	GLfloat poczatek2[3] = { -55.0f,10.0f, 35.0f };
-
-	GLfloat poczatek3[3] = { 45.0f,35.0f, -20.0f };
-	GLfloat poczatek4[3] = { 45.0f,10.0f, -25.0f };
-	GLfloat poczatek5[3] = { 45.0f,10.0f, 35.0f };
-
-	GLfloat poczatek6[3] = {-60.0f,40.0f, -20.0f };
-
-	GLfloat srodek5[3] = { 60.0f,45.0f, -15.0f };
-	GLfloat srodek6[3] = { 60.0f,45.0f, 7.5f };
-	GLfloat srodek7[3] = { 60.0f,45.0f, 30.0f };
-
-	GLfloat srodek8[3] = { -35.0f,50.0f, 7.5f };
-
-	GLfloat poczatek7[3] = { -38.0f, 92.0f, 10.5f };
-	GLfloat poczatek8[3] = { -38.0f, 92.0f, 2.5f };
-
-	GLfloat poczatek9[3] = { -41.0f, 97.0f, 4.5f };
-
-	GLfloat srodek9[3] = { -29.0f,101.0f, 7.5f };
-
 
 	wheel(15, 15, srodek);							//ko³a
 	wheel(15, 15, srodek2);
 	wheel(15, 15, srodek3);
 	wheel(15, 15, srodek4);
 
-	prostopadloscian(10, 5, 55, poczatek);		//oœ1
+	GLfloat poczatek[3] = { -55.0f,35.0f, -20.0f };	//wsp pocz¹tku prostok¹tów
+	prostopadloscian(10, 5, 55, poczatek);			//oœ tylna
 
-	prostopadloscian(10, 30, 5, poczatek1);		//³¹czenie kó³
+	GLfloat poczatek1[3] = { -55.0f,10.0f, -25.0f };
+	prostopadloscian(10, 30, 5, poczatek1);			//³¹czenie kó³ ty³
+	
+	GLfloat poczatek2[3] = { -55.0f,10.0f, 35.0f };
 	prostopadloscian(10, 30, 5, poczatek2);
 
-	prostopadloscian(10, 5, 55, poczatek3);
-	prostopadloscian(10, 30, 5, poczatek4);
+
+	GLfloat poczatek3[3] = { 45.0f,35.0f, -20.0f };	
+	prostopadloscian(10, 5, 55, poczatek3);			//oœ przednia
+
+	GLfloat poczatek4[3] = { 45.0f,10.0f, -25.0f };
+	prostopadloscian(10, 30, 5, poczatek4);			//³¹czenie kó³ ty³
+
+	GLfloat poczatek5[3] = { 45.0f,10.0f, 35.0f };
 	prostopadloscian(10, 30, 5, poczatek5);
-	
-	prostopadloscian(120, 10, 55, poczatek6);
-	
-	walec_prawo(5,5,srodek5);					//œwiat³a
-	walec_prawo(5, 5, srodek6);					
-	walec_prawo(5, 5, srodek7);
 
-	walec_pion(3, 45, srodek8);					//mocowanie kamery
+	GLfloat poczatek6[3] = { -60.0f,40.0f, -20.0f };
+	prostopadloscian(120, 10, 55, poczatek6);		//pod³oga
+	
+	GLfloat srodek5[3] = { 60.0f,45.0f, -15.0f };
+	walec_prawo(5,5,srodek5);						//œwiat³o prawe
 
-	prostopadloscian(6, 10, 2, poczatek7);
+	GLfloat srodek6[3] = { 60.0f,45.0f, 7.5f };	
+	walec_prawo(5, 5, srodek6);						//œwiat³o œrodkowe
+
+	GLfloat srodek7[3] = { 60.0f,45.0f, 30.0f };
+	walec_prawo(5, 5, srodek7);						//œwiat³o lewe
+
+	GLfloat srodek8[3] = { -35.0f,50.0f, 7.5f };
+	walec_pion(3, 45, srodek8);						//dr¹¿ek kamery
+
+	GLfloat poczatek7[3] = { -38.0f, 92.0f, 10.5f };
+	prostopadloscian(6, 10, 2, poczatek7);			//mocowanie kamery
+
+	GLfloat poczatek8[3] = { -38.0f, 92.0f, 2.5f };
 	prostopadloscian(6, 10, 2, poczatek8);
 
-	prostopadloscian(12, 6, 6, poczatek9);
-	walec_prawo(2, 2, srodek9);
+	GLfloat poczatek9[3] = { -41.0f, 97.0f, 4.5f };
+	prostopadloscian(12, 6, 6, poczatek9);			//kamera
+
+	GLfloat srodek9[3] = { -29.0f,101.0f, 7.5f };
+	walec_prawo(2, 2, srodek9);						//obiektyw kamery
 
 
 }
@@ -1063,16 +1063,16 @@ LRESULT CALLBACK WndProc(       HWND    hWnd,
 		case WM_KEYDOWN:
 			{
 			if(wParam == VK_UP)
-				xRot-= 5.0f;
+				xRot-= 1.0f;
 
 			if(wParam == VK_DOWN)
-				xRot += 5.0f;
+				xRot += 1.0f;
 
 			if(wParam == VK_LEFT)
-				yRot -= 5.0f;
+				yRot -= 1.0f;
 
 			if(wParam == VK_RIGHT)
-				yRot += 5.0f;
+				yRot += 1.0f;
 
 			xRot = (const int)xRot % 360;
 			yRot = (const int)yRot % 360;
