@@ -367,7 +367,7 @@ void wheel(double r, double h, GLfloat srodek[] )
 {
 	double x, y, alpha, PI = 3.14;
 	glBegin(GL_TRIANGLE_FAN);
-	glColor3d(0.15, 0.16, 0.29);
+	glColor3d(0.300, 0.300, 0.300);
 	glVertex3fv(srodek);
 	for (alpha = 0; alpha <= 2 * PI; alpha += PI / 8.0)
 	{
@@ -389,7 +389,7 @@ void wheel(double r, double h, GLfloat srodek[] )
 	glEnd();
 
 	glBegin(GL_TRIANGLE_FAN);
-	glColor3d(0.15, 0.16, 0.29);
+	glColor3d(0.300, 0.300, 0.300);
 	glVertex3fv(srodek);
 	for (alpha = 0; alpha >=  -2*PI; alpha -= PI / 8.0)
 	{
@@ -484,7 +484,7 @@ void prostopadloscian(double szer, double wys, double gleb, GLfloat poczatek[])
 	for (int i = 0; i < szer; i++)
 	{
 		glBegin(GL_TRIANGLE_STRIP);
-		glColor3d(1, 0.0, 0.0);
+		glColor3d(0.300, 0.300, 0.300);
 
 		for (int j = 0; j <= wys;j++)
 		{
@@ -503,7 +503,7 @@ void prostopadloscian(double szer, double wys, double gleb, GLfloat poczatek[])
 	for (int i = 0; i < szer; i++)
 	{
 		glBegin(GL_TRIANGLE_STRIP);
-		glColor3d(1, 0.0, 0.0);
+		glColor3d(0.300, 0.300, 0.300);
 
 		for (int j = 0; j <= wys; j++)
 		{
@@ -523,7 +523,7 @@ void prostopadloscian(double szer, double wys, double gleb, GLfloat poczatek[])
 	for (int i = 0; i < gleb; i++)
 	{
 		glBegin(GL_TRIANGLE_STRIP);
-		glColor3d(0.15, 0.16, 0.29);
+		glColor3d(0.230, 0.230, 0.230);
 
 		for (int j = 0; j <= wys; j++)
 		{
@@ -655,7 +655,15 @@ void lazik()
 	GLfloat srodek5[3] = { 60.0f,45.0f, -15.0f };
 	GLfloat srodek6[3] = { 60.0f,45.0f, 7.5f };
 	GLfloat srodek7[3] = { 60.0f,45.0f, 30.0f };
+
 	GLfloat srodek8[3] = { -35.0f,50.0f, 7.5f };
+
+	GLfloat poczatek7[3] = { -38.0f, 92.0f, 10.5f };
+	GLfloat poczatek8[3] = { -38.0f, 92.0f, 2.5f };
+
+	GLfloat poczatek9[3] = { -41.0f, 97.0f, 4.5f };
+
+	GLfloat srodek9[3] = { -29.0f,101.0f, 7.5f };
 
 
 	wheel(15, 15, srodek);							//ko³a
@@ -674,11 +682,19 @@ void lazik()
 	
 	prostopadloscian(120, 10, 55, poczatek6);
 	
-	walec_prawo(5,5,srodek5);
-	walec_prawo(5, 5, srodek6);
+	walec_prawo(5,5,srodek5);					//œwiat³a
+	walec_prawo(5, 5, srodek6);					
 	walec_prawo(5, 5, srodek7);
 
-	walec_pion(3, 55, srodek8);
+	walec_pion(3, 45, srodek8);					//mocowanie kamery
+
+	prostopadloscian(6, 10, 2, poczatek7);
+	prostopadloscian(6, 10, 2, poczatek8);
+
+	prostopadloscian(12, 6, 6, poczatek9);
+	walec_prawo(2, 2, srodek9);
+
+
 }
 void RenderScene(void)
 	{
