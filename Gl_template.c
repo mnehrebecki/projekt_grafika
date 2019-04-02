@@ -47,7 +47,7 @@ static HINSTANCE hInstance;
 // Rotation amounts
 static GLfloat xRot = 0.0f;
 static GLfloat yRot = 0.0f;
-
+static GLfloat zRot = 0.0f;
 
 static GLsizei lastHeight;
 static GLsizei lastWidth;
@@ -377,7 +377,7 @@ void wheel(double r, double h, GLfloat srodek[] )
 	}
 	glEnd();
 
-	glBegin(GL_QUAD_STRIP);
+	glBegin(GL_TRIANGLE_STRIP);
 	glColor3d(0.0, 0.0, 0);
 	for (alpha = 0.0; alpha <= 2 * PI; alpha += PI / 8.0)
 	{
@@ -390,12 +390,13 @@ void wheel(double r, double h, GLfloat srodek[] )
 
 	glBegin(GL_TRIANGLE_FAN);
 	glColor3d(0.300, 0.300, 0.300);
+	srodek[2] += h;
 	glVertex3fv(srodek);
 	for (alpha = 0; alpha >=  -2*PI; alpha -= PI / 8.0)
 	{
 		x = srodek[0] + r*sin(alpha);
 		y = srodek[1] + r*cos(alpha);
-		glVertex3d(x, y, h+srodek[2]);
+		glVertex3d(x, y, srodek[2]);
 	}
 	glEnd();
 }
@@ -414,7 +415,7 @@ void walec_prawo(double r, double h, GLfloat srodek[])
 	}
 	glEnd();
 
-	glBegin(GL_QUAD_STRIP);
+	glBegin(GL_TRIANGLE_STRIP);
 	glColor3d(0.0, 0.0, 0);
 	for (alpha = 0.0; alpha <= 2 * PI; alpha += PI / 8.0)
 	{
@@ -427,12 +428,13 @@ void walec_prawo(double r, double h, GLfloat srodek[])
 
 	glBegin(GL_TRIANGLE_FAN);
 	glColor3d(1, 1, 0);
+	srodek[0] += h;
 	glVertex3fv(srodek);
 	for (alpha = 0; alpha >= -2 * PI; alpha -= PI / 8.0)
 	{
 		y = srodek[1] + r * sin(alpha);
 		z = srodek[2] + r * cos(alpha);
-		glVertex3d(h+srodek[0], y, z);
+		glVertex3d(srodek[0], y, z);
 	}
 	glEnd();
 }
@@ -451,7 +453,7 @@ void walec_pion(double r, double h, GLfloat srodek[])
 	}
 	glEnd();
 
-	glBegin(GL_QUAD_STRIP);
+	glBegin(GL_TRIANGLE_STRIP);
 	glColor3d(0.216, 0.210, 0.210);
 	for (alpha = 0.0; alpha <= 2 * PI; alpha += PI / 8.0)
 	{
@@ -479,7 +481,7 @@ void prostopadloscian(double szer, double wys, double gleb, GLfloat poczatek[])
 {
 	float x = 0, y = 0, z = 0;
 	int ile;
-
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	//front
 	for (int i = 0; i < szer; i++)
 	{
@@ -637,7 +639,7 @@ void ramie(double r1, double r2, double h, double d)
 
 void lazik()
 {
-
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	GLfloat srodek[3] = { -50.0f,15.0f,40.0f };		//wsp œrodków kó³
 	GLfloat srodek2[3] = { 50.0f,15.0f,40.0f };
 	GLfloat srodek3[3] = { -50.0f,15.0f,-40.0f };
@@ -680,27 +682,51 @@ void lazik()
 	walec_prawo(5, 5, srodek7);						//œwiat³o lewe
 
 	GLfloat srodek8[3] = { -35.0f,50.0f, 7.5f };
-	walec_pion(3, 45, srodek8);						//dr¹¿ek kamery
+	walec_pion(3, 55, srodek8);						//dr¹¿ek kamery
 
-	GLfloat poczatek7[3] = { -38.0f, 92.0f, 10.5f };
+	GLfloat poczatek7[3] = { -38.0f, 102.0f, 10.5f };
 	prostopadloscian(6, 10, 2, poczatek7);			//mocowanie kamery
 
-	GLfloat poczatek8[3] = { -38.0f, 92.0f, 2.5f };
+	GLfloat poczatek8[3] = { -38.0f, 102.0f, 2.5f };
 	prostopadloscian(6, 10, 2, poczatek8);
 
-	GLfloat poczatek9[3] = { -41.0f, 97.0f, 4.5f };
+	GLfloat poczatek9[3] = { -41.0f, 107.0f, 4.5f };
 	prostopadloscian(12, 6, 6, poczatek9);			//kamera
 
-	GLfloat srodek9[3] = { -29.0f,101.0f, 7.5f };
+	GLfloat srodek9[3] = { -29.0f,111.0f, 7.5f };
 	walec_prawo(2, 2, srodek9);						//obiektyw kamery
-
 
 	
 	GLfloat srodek_antena[3] = { -50.0f,50.0f, 25.0f };
 	walec_pion(0.35f, 80, srodek_antena);
-	
 
 
+	GLfloat srodek_ramie[3] = { 50.0f,50.0f, 7.5f };
+	walec_pion(3, 30, srodek_ramie);						//dr¹¿ek ramienia
+
+	GLfloat poczatek10[3] = { 47.0f, 77.0f, 10.5f };
+	prostopadloscian(6, 10, 2, poczatek10);			//mocowanie ramienia
+
+	GLfloat poczatek11[3] = { 47.0f, 77.0f, 2.5f };
+	prostopadloscian(6, 10, 2, poczatek11);
+
+	GLfloat srodek_ramie2[3] = {47.0f, 85.0f, 7.5f};
+	walec_prawo(3, 40, srodek_ramie2);
+
+	GLfloat srodek_ramie3[3] = { 91.0f, 85.0f, 7.5f };
+	walec_prawo(3, 40, srodek_ramie3);
+
+	GLfloat poczatek12[3] = { 84.0f, 82.0f, 10.5f };
+	prostopadloscian(10, 6, 2, poczatek12);			//mocowanie ramienia
+
+	GLfloat poczatek13[3] = { 84.0f, 82.0f, 2.5f };
+	prostopadloscian(10, 6, 2, poczatek13);
+
+	GLfloat poczatek14[3] = { 128.0f, 82.0f, 10.5f };
+	prostopadloscian(10, 6, 2, poczatek14);			//mocowanie ramienia
+
+	GLfloat poczatek15[3] = { 128.0f, 82.0f, 2.5f };
+	prostopadloscian(10, 6, 2, poczatek15);
 }
 void RenderScene(void)
 	{
@@ -713,6 +739,7 @@ void RenderScene(void)
 	glPushMatrix();
 	glRotatef(xRot, 1.0f, 0.0f, 0.0f);
 	glRotatef(yRot, 0.0f, 1.0f, 0.0f);
+	glRotatef(zRot, 0.0f, 0.0f, 1.0f);
 
 	/////////////////////////////////////////////////////////////////
 	// MIEJSCE NA KOD OPENGL DO TWORZENIA WLASNYCH SCEN:		   //
@@ -1080,8 +1107,15 @@ LRESULT CALLBACK WndProc(       HWND    hWnd,
 			if(wParam == VK_RIGHT)
 				yRot += 1.0f;
 
+			if (wParam == 'Q')
+				zRot -= 5.0f;
+
+			if (wParam == 'E')
+				zRot += 5.0f;
+
 			xRot = (const int)xRot % 360;
 			yRot = (const int)yRot % 360;
+			zRot = (const int)zRot % 360;
 
 			InvalidateRect(hWnd,NULL,FALSE);
 			}
