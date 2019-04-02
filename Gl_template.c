@@ -128,7 +128,7 @@ void calcNormal(float v[3][3], float out[3])
 // Change viewing volume and viewport.  Called when window is resized
 void ChangeSize(GLsizei w, GLsizei h)
 	{
-	GLfloat nRange = 100.0f;
+	GLfloat nRange = 150.0f;
 	GLfloat fAspect;
 	// Prevent a divide by zero
 	if(h == 0)
@@ -693,6 +693,12 @@ void lazik()
 
 	GLfloat srodek9[3] = { -29.0f,101.0f, 7.5f };
 	walec_prawo(2, 2, srodek9);						//obiektyw kamery
+
+
+	
+	GLfloat srodek_antena[3] = { -50.0f,50.0f, 25.0f };
+	walec_pion(0.35f, 80, srodek_antena);
+	
 
 
 }
