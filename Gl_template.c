@@ -128,7 +128,7 @@ void calcNormal(float v[3][3], float out[3])
 // Change viewing volume and viewport.  Called when window is resized
 void ChangeSize(GLsizei w, GLsizei h)
 	{
-	GLfloat nRange = 150.0f;
+	GLfloat nRange = 350.0f;
 	GLfloat fAspect;
 	// Prevent a divide by zero
 	if(h == 0)
@@ -728,6 +728,21 @@ void lazik()
 	GLfloat poczatek15[3] = { 128.0f, 82.0f, 2.5f };
 	prostopadloscian(10, 6, 2, poczatek15);
 }
+
+void teren()
+{
+	
+	glBegin(GL_POLYGON);
+	glColor3d(0.8, 0, 0);
+	glVertex3d(-200.0, 0, -200);
+	glVertex3d(-200.0, 0, 200);
+	glVertex3d(200.0, 0, 200);
+	glVertex3d(200.0, 0, -200);
+	glEnd();
+	GLfloat podloga1[3] = { 200.0,-1,-200 };
+	prostopadloscian(400, 1, 400,podloga1);
+
+}
 void RenderScene(void)
 	{
 	//float normal[3];	// Storeage for calculated surface normal
@@ -748,8 +763,8 @@ void RenderScene(void)
 	
 	//Sposób na odróŸnienie "przedniej" i "tylniej" œciany wielok¹ta:
 	glPolygonMode(GL_BACK,GL_LINE);
-	//walec(40, 40);
-	//szescian();
+	
+	teren();
 	lazik();
 	//Uzyskanie siatki:
 	//glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
